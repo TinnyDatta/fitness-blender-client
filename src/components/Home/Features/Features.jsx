@@ -1,5 +1,10 @@
 
 import { MdOutlinePersonalInjury } from "react-icons/md";
+import { GrGroup } from "react-icons/gr";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import { SiWellfound } from "react-icons/si";
+import { TfiThumbUp } from "react-icons/tfi";
+import { FaSpa } from "react-icons/fa";
 
 const Features = () => {
     return (
@@ -22,7 +27,7 @@ const Features = () => {
 </div>
             <div className="max-w-xs rounded-md shadow-md">
 	<div>
-    < MdOutlinePersonalInjury className="text-8xl ml-24 text-[#CD5C5C]"/>
+    < GrGroup className="text-8xl ml-24 text-[#CD5C5C]"/>
     </div>
 	<div className="flex flex-col justify-between p-6 space-y-8">
 		<div className="space-y-2">
@@ -33,7 +38,7 @@ const Features = () => {
 </div>
             <div className="max-w-xs rounded-md shadow-md">
 	<div>
-    < MdOutlinePersonalInjury className="text-8xl ml-24 text-[#CD5C5C]"/>
+    < MdOutlineSupportAgent className="text-8xl ml-24 text-[#CD5C5C]"/>
     </div>
 	<div className="flex flex-col justify-between p-6 space-y-8">
 		<div className="space-y-2">
@@ -44,7 +49,7 @@ const Features = () => {
 </div>
             <div className="max-w-xs rounded-md shadow-md">
 	<div>
-    < MdOutlinePersonalInjury className="text-8xl ml-24 text-[#CD5C5C]"/>
+    < SiWellfound className="text-8xl ml-24 text-[#CD5C5C]"/>
     </div>
 	<div className="flex flex-col justify-between p-6 space-y-8">
 		<div className="space-y-2">
@@ -55,7 +60,7 @@ const Features = () => {
 </div>
             <div className="max-w-xs rounded-md shadow-md">
 	<div>
-    < MdOutlinePersonalInjury className="text-8xl ml-24 text-[#CD5C5C]"/>
+    < TfiThumbUp className="text-8xl ml-24 text-[#CD5C5C]"/>
     </div>
 	<div className="flex flex-col justify-between p-6 space-y-8">
 		<div className="space-y-2">
@@ -66,7 +71,7 @@ const Features = () => {
 </div>
             <div className="max-w-xs rounded-md shadow-md">
 	<div>
-    < MdOutlinePersonalInjury className="text-8xl ml-24 text-[#CD5C5C]"/>
+    < FaSpa className="text-8xl ml-24 text-[#CD5C5C]"/>
     </div>
 	<div className="flex flex-col justify-between p-6 space-y-8">
 		<div className="space-y-2">
