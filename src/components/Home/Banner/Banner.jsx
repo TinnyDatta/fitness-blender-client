@@ -3,7 +3,7 @@ const Banner = () => {
     return (
       <div className="hero h-[400px] my-10">
   <div className="hero-content  flex-col lg:flex-row-reverse">
-    <img  src="/public/images/fitnessBanner.jpg" className="w-[300px] h-[300px] rounded-lg shadow-2xl" />
+    <img  src="/images/fitnessBanner.jpg" className="w-[300px] h-[300px] rounded-lg shadow-2xl" />
     <div className="mr-8">
       <p className="text-[#CD5C5C] my-4">Breathe, Relax and br Healthy</p>
       <h1 className="text-5xl text-[#8A3324] ">This is FitnessBlender center</h1>
