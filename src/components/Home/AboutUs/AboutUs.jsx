@@ -22,7 +22,7 @@ const AboutUs = () => {
 			<p className="mt-4 mb-2 text-lg ">Every member will get some free fitness program
 				<br  className="hidden md:inline lg:hidden" /> about a variety of exercises and ways to learn.
 			</p>
-			<p className="text-2xl text-[#8A3324]">Contact us for details</p>
+			<p className="text-2xl text-[#8A3324]">Contact us for details...</p>
             <div className="mt-4 text-xl bg-[#CD5C5C] text-white p-5 rounded-xl text-center">
              <h2 className="flex flex-row items-center gap-2"><MdEmail /> fitnessBlender@gmail.com</h2>
              <h2 className="flex flex-row items-center gap-2"><IoCallOutline /> +000 888 234 765</h2>
