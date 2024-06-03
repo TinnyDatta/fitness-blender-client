@@ -11,9 +11,9 @@ const Navbar = () => {
  
     const navLinks = <>
     <li><NavLink to='/' className={({isActive}) => isActive? ' text-[#CD5C5C]  border border-[#CD5C5C] p-2' : ''}>Home</NavLink></li>
-    <li><NavLink className={({isActive}) => isActive? ' border p-2 border-[#CD5C5C] text-[#CD5C5C]' : ''} to='/rooms'>All Trainer</NavLink></li> 
-    <li><NavLink className={({isActive}) => isActive? ' border p-2 border-[#CD5C5C] text-[#CD5C5C]' : ''} to='/rooms'>All Classes</NavLink></li> 
-    <li><NavLink className={({isActive}) => isActive? ' border p-2 border-[#CD5C5C] text-[#CD5C5C]' : ''} to='/rooms'>Forum</NavLink></li> 
+    <li><NavLink className={({isActive}) => isActive? ' border p-2 border-[#CD5C5C] text-[#CD5C5C]' : ''} to='/allTrainers'>All Trainer</NavLink></li> 
+    <li><NavLink className={({isActive}) => isActive? ' border p-2 border-[#CD5C5C] text-[#CD5C5C]' : ''} to='/allClasses'>All Classes</NavLink></li> 
+    <li><NavLink className={({isActive}) => isActive? ' border p-2 border-[#CD5C5C] text-[#CD5C5C]' : ''} to='/forum'>Forum</NavLink></li> 
     {
       user && <>
       <li><NavLink className={({isActive}) => isActive? ' border p-2 border-[#CD5C5C] text-[#CD5C5C]' : ''} to='/myBookings'>Dashboard</NavLink></li>
