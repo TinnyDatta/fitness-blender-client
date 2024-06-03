@@ -5,19 +5,22 @@ import { Navigation } from 'swiper/modules';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Reviews = () => {
 
-        const [reviews, setReviews] = useState([]);
+        const axiosSecure = useAxiosSecure();
 
-    useEffect(() => {
-        fetch('http://localhost:5000/reviews')
-            .then(res => res.json())
-            .then(data => setReviews(data))
-    }, [])
+        const {data: reviews = []} = useQuery({
+            queryKey: ['reviews'],
+            queryFn: async() => {
+            const {data} = await axiosSecure.get('/reviews');
+            return data;
+            }
+        })
 
     return (
         <>
