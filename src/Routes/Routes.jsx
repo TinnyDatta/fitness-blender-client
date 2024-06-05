@@ -10,6 +10,8 @@ import Forum from "../Pages/Forum/Forum";
 import TrainerDetails from "../Pages/TrainerDetails/TrainerDetails";
 import TrainerBooking from "../Pages/TrainerBooking/TrainerBooking";
 import DashboardLayout from "../Layout/DashboardLayout";
+import ManageSlots from "../Pages/Dashboard/Trainer/ManageSlots";
+import AddSlot from "../Pages/Dashboard/Trainer/AddSlot";
 
 const router = createBrowserRouter([
     {
@@ -55,7 +57,14 @@ const router = createBrowserRouter([
       path: "/dashboard",
       element : <DashboardLayout></DashboardLayout>,
       children:[
-
+       {
+        index: true,
+        element: <ManageSlots></ManageSlots>
+       },
+       {
+        path: 'add-slot',
+        element: <AddSlot></AddSlot>
+       }
       ],
     },
   ]);

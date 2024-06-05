@@ -25,7 +25,7 @@ const Sidebar = () => {
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
-            <a  className="btn btn-ghost text-2xl font-bold text-[#CD5C5C] ">FitnessBlender</a>
+            <p  className="btn btn-ghost text-2xl font-bold text-[#CD5C5C] ">FitnessBlender</p>
             </Link>
           </div>
         </div>
@@ -48,7 +48,7 @@ const Sidebar = () => {
           <div>
             <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
               <Link to='/'>
-              <a  className="btn btn-ghost text-2xl font-bold text-[#CD5C5C] ">FitnessBlender</a>
+              <p className="btn btn-ghost text-2xl font-bold text-[#CD5C5C] ">FitnessBlender</p>
               </Link>
             </div>
           </div>
@@ -88,7 +88,8 @@ const Sidebar = () => {
               </NavLink>
               {/* manage slot */}
               <NavLink
-                to='manage-slots'
+                to='/dashboard'
+                end
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
                     isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
