@@ -52,7 +52,8 @@ const Register = () => {
          
       updateUserProfile(name, photo)
       .then(()=> {
-
+        // save user in database
+        
         // setUser((user)=>({
           
         //   ...user, displayName:name, photoURL: photo 
@@ -60,8 +61,6 @@ const Register = () => {
         
         navigate(location?.state || '/')
       })
-        // navigate(location?.state || '/')
-       
        }
       })
    .catch((error) =>{

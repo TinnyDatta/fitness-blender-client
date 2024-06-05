@@ -8,6 +8,7 @@ import AllTrainers from "../Pages/AllTrainers/AllTrainers";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import Forum from "../Pages/Forum/Forum";
 import TrainerDetails from "../Pages/TrainerDetails/TrainerDetails";
+import TrainerBooking from "../Pages/TrainerBooking/TrainerBooking";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         {
          path: '/details/:id',
          element: <TrainerDetails></TrainerDetails>
+        },
+        {
+         path: '/booking',
+         element: <TrainerBooking></TrainerBooking>
         },
         {
           path: '/allClasses',

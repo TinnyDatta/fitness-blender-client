@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 
 const TrainerDetails = () => {
    const {id} = useParams();
+   const {availableSlots} = useParams();
     const axiosSecure = useAxiosSecure();
 
     const {data: details = {} } = useQuery({
@@ -15,6 +16,7 @@ const TrainerDetails = () => {
         return data;
         }
     })
+   
 
     return (
         <div>
@@ -43,8 +45,10 @@ const TrainerDetails = () => {
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-16">
       {details?.availableSlots?.map((detail, index) => (
           
-          <button key={index} className="btn bg-[#CD5C5C] text-white border-0 border-b-4 border-b-black text-xl md:w-80" >{detail.partOfTheDay} : {detail.time}</button>
-          
+          <Link to='/booking' key={index}>
+          <button  className="btn bg-[#CD5C5C] text-white border-0 border-b-4 border-b-black text-xl md:w-80" >{detail.partOfTheDay} : {detail.time}</button>
+          </Link>
+
         ))}
       </div>
 
