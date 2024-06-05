@@ -6,16 +6,17 @@ import { Helmet } from "react-helmet-async";
 
 const TrainerDetails = () => {
    const {id} = useParams();
-   const {availableSlots} = useParams();
     const axiosSecure = useAxiosSecure();
 
     const {data: details = {} } = useQuery({
+        
         queryKey: ['details', id],
         queryFn: async() => {
         const {data} = await axiosSecure.get(`/details/${id}`);
         return data;
         }
     })
+    
    
 
     return (

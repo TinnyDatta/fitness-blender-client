@@ -9,6 +9,7 @@ import AllClasses from "../Pages/AllClasses/AllClasses";
 import Forum from "../Pages/Forum/Forum";
 import TrainerDetails from "../Pages/TrainerDetails/TrainerDetails";
 import TrainerBooking from "../Pages/TrainerBooking/TrainerBooking";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,13 @@ const router = createBrowserRouter([
           element: <Forum></Forum>
         }
       ]
+    },
+    {
+      path: "/dashboard",
+      element : <DashboardLayout></DashboardLayout>,
+      children:[
+
+      ],
     },
   ]);
 
