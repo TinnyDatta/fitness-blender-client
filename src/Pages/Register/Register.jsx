@@ -1,16 +1,18 @@
 
-import {  useContext, useState} from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../Providers/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import useAxiosCommon from "../../hooks/useAxiosCommon";
 
 
 const Register = () => {
 
-  const {createUser, updateUserProfile } = useContext(AuthContext);
+  const axiosCommon = useAxiosCommon();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const [registerError, setRegisterError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -22,58 +24,67 @@ const Register = () => {
 
   // navigation
   const location = useLocation();
-     const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
   const onSubmit = data => {
-    const {email, password, name, photo} = data
+    const { email, password, name, photo } = data
 
     setRegisterError('')
     setSuccess('')
 
-    if(password.length < 6){
+    if (password.length < 6) {
       setRegisterError('password should have at least 6 characters');
       return;
     }
-    else if(!/[A-Z]/.test(password)){
+    else if (!/[A-Z]/.test(password)) {
       setRegisterError('password must have at least one uppercase letter');
       return;
     }
-    else if(!/[a-z]/.test(password)){
+    else if (!/[a-z]/.test(password)) {
       setRegisterError('password must have at least one lowercase letter');
       return;
     }
-    
-    createUser(email, password)
-    .then((result) => {
-      toast.success('successfully register')
-      // console.log(result)
-      if(result.user){
-         
-      updateUserProfile(name, photo)
-      .then(()=> {
-        // save user in database
-        
-        // setUser((user)=>({
-          
-        //   ...user, displayName:name, photoURL: photo 
-        //  }))
-        
-        navigate(location?.state || '/')
-      })
-       }
-      })
-   .catch((error) =>{
-   setRegisterError(error.message);
-   })
-  
-  };
- 
-    
 
-    return (
-      <div>
-          <div className="hero">
+    createUser(email, password)
+      .then((result) => {
+        toast.success('successfully register')
+        // console.log(result)
+        if (result.user) {
+
+          updateUserProfile(name, photo)
+            .then(() => {
+              // save user in database
+              const userInfo = {
+                name: name,
+                email: email
+              }
+              axiosCommon.post('/users', userInfo)
+                .then(res => {
+                  if (res.data.insertedId) {
+                    // setUser((user)=>({
+
+                    //   ...user, displayName:name, photoURL: photo 
+                    //  }))
+
+                    navigate(location?.state || '/')
+                  }
+                })
+
+            })
+        }
+      })
+      .catch((error) => {
+        setRegisterError(error.message);
+      })
+
+  };
+
+
+
+  return (
+    <div>
+      <div className="hero">
         <div className="hero-content flex-col">
           <div className="text-center  lg:text-left">
             <h1 className=" text-3xl font-semibold text-center">Register now!</h1>
@@ -85,8 +96,8 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
-                <input type="text" placeholder="Name" className="input input-bordered" 
-                {...register("name", { required: true })}
+                <input type="text" placeholder="Name" className="input input-bordered"
+                  {...register("name", { required: true })}
                 />
                 {errors.name && <span className="text-red-500">This field is required</span>}
               </div>
@@ -94,41 +105,41 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" placeholder="email" className="input input-bordered" 
-                {...register("email", { required: true })}
-               
+                <input type="email" placeholder="email" className="input input-bordered"
+                  {...register("email", { required: true })}
+
                 />
-                 {errors.email && <span className="text-red-500">This field is required</span>}
-                 
+                {errors.email && <span className="text-red-500">This field is required</span>}
+
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Photo URL</span>
                 </label>
                 <input type="text" placeholder="Photo URL" className="input input-bordered"
-                {...register("photo", { required: true })}
+                  {...register("photo", { required: true })}
                 />
-                 {errors.photo && <span className="text-red-500">This field is required</span>}
+                {errors.photo && <span className="text-red-500">This field is required</span>}
               </div>
               <div className=" relative" >
                 <div className="form-control">
-                <label  className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                
-                <input
-                type= "password"
-                placeholder="password" 
-                className="input input-bordered relative" 
-                {...register("password", { required: true })}
-               />
-               {errors.password && <span className="text-red-500">This field is required</span>}
-               
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-                
-              </div>
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+
+                  <input
+                    type="password"
+                    placeholder="password"
+                    className="input input-bordered relative"
+                    {...register("password", { required: true })}
+                  />
+                  {errors.password && <span className="text-red-500">This field is required</span>}
+
+                  <label className="label">
+                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                  </label>
+
+                </div>
               </div>
               {
                 registerError && <p className="text-red-500">{registerError}</p>
@@ -141,8 +152,8 @@ const Register = () => {
           </form>
         </div>
       </div>
-      </div>
-    );
+    </div>
+  );
 };
 
 export default Register;
