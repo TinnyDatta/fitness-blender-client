@@ -4,15 +4,23 @@ import { FcSettings } from 'react-icons/fc'
 import { MdOutlineAddCircle } from "react-icons/md";
 import { MdOutlineLibraryAddCheck } from "react-icons/md";
 import { MdOutlineForum } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { MdGroups } from "react-icons/md";
+import { MdPostAdd } from "react-icons/md";
 import { AiOutlineBars } from 'react-icons/ai'
-import { BsGraphUp } from 'react-icons/bs'
+import { BiMinusFront } from "react-icons/bi";
+import { CiSquareQuestion } from "react-icons/ci";
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth';
+import useRole from '../../../hooks/useRole';
+import NavItem from '../Menu/NavItem';
 
 const Sidebar = () => {
-  const { logOut } = useAuth()
-  const [isActive, setActive] = useState(false)
+  const { logout } = useAuth()
+  const [isActive, setActive] = useState(false);
+  const [role] = useRole();
+  console.log(role);
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -57,62 +65,68 @@ const Sidebar = () => {
           <div className='flex flex-col justify-between flex-1 mt-6'>
             {/* Conditional toggle button here.. */}
 
-            {/*  Menu Items */}
             <nav>
-              {/* Statistics */}
-              <NavLink
-                to='statistics'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
+            <NavItem 
+              label='Front Page' 
+              address='/dashboard' 
+              icon={BiMinusFront} >
+              </NavItem>
+               {/* pages for trainer */}
+              {role === 'trainer' && (
+                <div>
+                  <NavItem 
+              label='Add Slot' 
+              address='add-slot' 
+              icon={MdOutlineAddCircle} >
+              </NavItem>
+      
+              
+              <NavItem 
+              label='Manage Slots' 
+              address='manage-slot' 
+              icon={MdOutlineLibraryAddCheck} >
+              </NavItem>
+              
+             
+              <NavItem 
+              label='Add Forum' 
+              address='add-forum' 
+              icon={MdOutlineForum} >
+              </NavItem>
+                </div>
+              )
                 }
-              >
-                <BsGraphUp className='w-5 h-5' />
 
-                <span className='mx-4 font-medium'>Statistics</span>
-              </NavLink>
+                {/* pages for admin */}
 
-              {/* Add slot */}
-              <NavLink
-                to='add-slot'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <MdOutlineAddCircle className='w-5 h-5' />
+                { role === 'admin' && (
+                  <div>
+                    <NavItem 
+              label='Newsletter Subscribers' 
+              address='subscribers' 
+              icon={MdEmail} >
+              </NavItem>
 
-                <span className='mx-4 font-medium'>Add Slot</span>
-              </NavLink>
-              {/* manage slot */}
-              <NavLink
-                to='/dashboard'
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <MdOutlineLibraryAddCheck  className='w-5 h-5' />
+              <NavItem 
+              label='All Trainers' 
+              address='all-trainers' 
+              icon={MdGroups} >
+              </NavItem>
 
-                <span className='mx-4 font-medium'>Manage Slots</span>
-              </NavLink>
-              {/* add forum */}
-              <NavLink
-                to='add-forum'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <MdOutlineForum  className='w-5 h-5' />
+              <NavItem 
+              label='Applied Trainer' 
+              address='applied-trainer' 
+              icon={CiSquareQuestion} >
+              </NavItem>
 
-                <span className='mx-4 font-medium'>Add Forum</span>
-              </NavLink>
+              <NavItem 
+              label='Add Class' 
+              address='add-class' 
+              icon={MdPostAdd} >
+              </NavItem>
+                  </div>
+                )}
+
             </nav>
           </div>
         </div>
@@ -134,7 +148,7 @@ const Sidebar = () => {
             <span className='mx-4 font-medium'>Profile</span>
           </NavLink>
           <button
-            onClick={logOut}
+            onClick={logout}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
             <GrLogout className='w-5 h-5' />
