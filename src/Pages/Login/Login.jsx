@@ -68,7 +68,7 @@ const Login = () => {
        <div className="hero">
       <div className="hero-content flex-col">
         <div className="text-center lg:text-left">
-          <h1 className="mb-3 text-3xl font-semibold text-center">Login to your account</h1>
+          <h1 className="mb-3 text-3xl font-semibold text-center text-[#8A3324]">Login to your account</h1>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <SocialLogin></SocialLogin>
@@ -94,10 +94,10 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-2">
-              <button className="btn bg-[#FFE4B5]">Login</button>
+              <button className="btn text-white bg-[#CD5C5C]">Login</button>
             </div>
             <div>
-            <p className="text-center">Have an account? <Link to='/register' className="text-[#E9967A] font-bold ">Register</Link> </p>
+            <p className="text-center">Have an account? <Link to='/register' className="text-[#CD5C5C] font-bold ">Register</Link> </p>
             </div>
             
           </form>

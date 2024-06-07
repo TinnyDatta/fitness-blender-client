@@ -17,7 +17,7 @@ const AllTrainers = () => {
         return data;
         }
     })
-
+ 
     return (
         <>
         <Helmet>
@@ -27,12 +27,13 @@ const AllTrainers = () => {
         <div className="my-10 max-w-6xl mx-auto">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {
-                trainers.map(trainer => (
+                trainers.map(trainer => ( 
                     <div key={trainer._id} className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
 	<img src={trainer.profileImage} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
 	<div className="flex flex-col justify-between p-6 space-y-8">
 		<div className="space-y-2">
-			<h2 className="text-2xl tracking-wide">{trainer.trainerName}</h2>
+			<h2 className="text-2xl tracking-wide">{trainer.trainerName
+            }</h2>
 			<p className="dark:text-gray-800">
 
             {trainer.availableSlots.map((slot, index) => (

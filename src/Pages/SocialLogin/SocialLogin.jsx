@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import useAxiosCommon from "../../hooks/useAxiosCommon";
+// import useAxiosCommon from "../../hooks/useAxiosCommon";
 
 
 
 const SocialLogin = () => {
-     const axiosCommon = useAxiosCommon();
+    //  const axiosCommon = useAxiosCommon();
      const {googleLogin} = useContext(AuthContext);
 
     //  navigation
@@ -16,17 +16,17 @@ const SocialLogin = () => {
      const handleSocialLogin = socialProvider => {
       socialProvider()
       .then(result => {
-        const userInfo = {
-            email: result.user?.email,
-            name: result.user?.displayName
-        }
-        axiosCommon.post('/users', userInfo)
-        .then(res => {
-            if(res.user){
+        // const userInfo = {
+        //     email: result.user?.email,
+        //     name: result.user?.displayName
+        // }
+        // axiosCommon.post('/users', userInfo)
+        // .then(res => {
+            if(result.user){
         
                 navigate(location?.state || '/')
                }
-        })
+        // })
          
       })
      }

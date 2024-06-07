@@ -6,12 +6,12 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import useAxiosCommon from "../../hooks/useAxiosCommon";
+// import useAxiosCommon from "../../hooks/useAxiosCommon";
 
 
 const Register = () => {
 
-  const axiosCommon = useAxiosCommon();
+  // const axiosCommon = useAxiosCommon();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const [registerError, setRegisterError] = useState('');
   const [success, setSuccess] = useState('');
@@ -55,13 +55,13 @@ const Register = () => {
           updateUserProfile(name, photo)
             .then(() => {
               // save user in database
-              const userInfo = {
-                name: name,
-                email: email
-              }
-              axiosCommon.post('/users', userInfo)
-                .then(res => {
-                  if (res.data.insertedId) {
+              // const userInfo = {
+              //   name: name,
+              //   email: email
+              // }
+              // axiosCommon.post('/users', userInfo)
+                // .then(res => {
+                  if (data.insertedId) {
                     // setUser((user)=>({
 
                     //   ...user, displayName:name, photoURL: photo 
@@ -69,7 +69,7 @@ const Register = () => {
 
                     navigate(location?.state || '/')
                   }
-                })
+                // })
 
             })
         }
@@ -87,7 +87,7 @@ const Register = () => {
       <div className="hero">
         <div className="hero-content flex-col">
           <div className="text-center  lg:text-left">
-            <h1 className=" text-3xl font-semibold text-center">Register now!</h1>
+            <h1 className=" text-3xl font-semibold text-center text-[#8A3324]">Register now!</h1>
           </div>
           <SocialLogin></SocialLogin>
           <form onSubmit={handleSubmit(onSubmit)} className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -145,10 +145,10 @@ const Register = () => {
                 registerError && <p className="text-red-500">{registerError}</p>
               }
               <div className="form-control mt-2">
-                <button className="btn bg-[#FFE4B5]">Register</button>
+                <button className="btn text-white bg-[#CD5C5C]">Register</button>
               </div>
             </div>
-            <p className="text-center mb-4">Already have an account? <Link to='/login' className="text-[#E9967A] font-bold ">Login</Link> </p>
+            <p className="text-center mb-4">Already have an account? <Link to='/login' className="text-[#CD5C5C] font-bold ">Login</Link> </p>
           </form>
         </div>
       </div>

@@ -2,6 +2,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import {   createContext, useEffect,  useState, } from "react";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 
 
@@ -31,6 +32,18 @@ const AuthProvider = ( {children}) => {
         })
     }
 
+    // save user in database
+    const saveUser = async user =>{
+        const currentUser = {
+            email: user?.email,
+            name: user?.displayName,
+            role: 'member',
+            status: 'verified',
+        }
+        const {data} = await axios.put(`http://localhost:5000/users`, currentUser)
+        return data
+    }
+
     // user sign in
     const signInUser = (email, password) => {
         console.log(email, password)
@@ -56,6 +69,7 @@ const AuthProvider = ( {children}) => {
          console.log(user)
              if (user) {
                setUser(user);
+               saveUser(user)
                }
              setLoading(false);
              
