@@ -19,6 +19,9 @@ import FrontPage from "../Pages/Dashboard/Common/FrontPage";
 import AllTrainersDashboard from "../Pages/Dashboard/Admin/AllTrainersDashboard";
 import AppliedTrainer from "../Pages/Dashboard/Admin/AppliedTrainer";
 import AddClass from "../Pages/Dashboard/Admin/AddClass";
+import ActivityLog from "../Pages/Dashboard/Member/ActivityLog";
+import Profile from "../Pages/Dashboard/Member/Profile";
+import BookedTrainer from "../Pages/Dashboard/Member/BookedTrainer";
 
 const router = createBrowserRouter([
     {
@@ -68,11 +71,25 @@ const router = createBrowserRouter([
       path: "/dashboard",
       element : <DashboardLayout></DashboardLayout>,
       children:[
-        // trainer routes
         {
           index: true,
           element: <FrontPage></FrontPage>
         },
+        // member routes
+         {
+          path: 'activity-log',
+          element: <ActivityLog></ActivityLog>
+         },
+         {
+          path: 'profile',
+          element: <Profile></Profile>
+         },
+         {
+          path: 'booked-trainer',
+          element: <BookedTrainer></BookedTrainer>
+         },
+
+        // trainer routes
        {
         path: 'manage-slot',
         element: <ManageSlots></ManageSlots>

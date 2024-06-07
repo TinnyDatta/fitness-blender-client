@@ -10,6 +10,9 @@ import { MdPostAdd } from "react-icons/md";
 import { AiOutlineBars } from 'react-icons/ai'
 import { BiMinusFront } from "react-icons/bi";
 import { CiSquareQuestion } from "react-icons/ci";
+import { CiBookmarkCheck } from "react-icons/ci";
+import { RxActivityLog } from "react-icons/rx";
+import { CgProfile } from "react-icons/cg";
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth';
@@ -71,6 +74,30 @@ const Sidebar = () => {
               address='/dashboard' 
               icon={BiMinusFront} >
               </NavItem>
+              {/* pages for member */}
+
+               {role === 'member' && (
+                <div>
+                  <NavItem 
+              label='Activity Log' 
+              address='activity-log' 
+              icon={RxActivityLog} >
+              </NavItem>
+
+                  <NavItem 
+              label='Profile' 
+              address='profile' 
+              icon={CgProfile} >
+              </NavItem>
+
+                  <NavItem 
+              label='Booked Trainer' 
+              address='booked-trainer' 
+              icon={CiBookmarkCheck} >
+              </NavItem>
+                </div>
+               )}
+
                {/* pages for trainer */}
               {role === 'trainer' && (
                 <div>
