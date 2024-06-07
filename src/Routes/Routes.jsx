@@ -12,6 +12,7 @@ import TrainerBooking from "../Pages/TrainerBooking/TrainerBooking";
 import DashboardLayout from "../Layout/DashboardLayout";
 import ManageSlots from "../Pages/Dashboard/Trainer/ManageSlots";
 import AddSlot from "../Pages/Dashboard/Trainer/AddSlot";
+import BecomeATrainer from "../Pages/BecomeATrainer/BecomeATrainer";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         {
          path: '/details/:id',
          element: <TrainerDetails></TrainerDetails>
+        },
+        {
+        path : '/becomeTrainer',
+        element: <BecomeATrainer></BecomeATrainer>
         },
         {
          path: '/booking',

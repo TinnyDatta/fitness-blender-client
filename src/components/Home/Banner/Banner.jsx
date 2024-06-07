@@ -1,6 +1,8 @@
 
 const Banner = () => {
     return (
+
+      <>
       <div className="hero h-[400px] my-10">
   <div className="hero-content  flex-col lg:flex-row-reverse">
     <img  src="/images/fitnessBanner.jpg" className="w-[300px] h-[300px] rounded-lg shadow-2xl" />
@@ -12,6 +14,7 @@ const Banner = () => {
     </div>
   </div>
 </div>
+      </>
     );
 };
 

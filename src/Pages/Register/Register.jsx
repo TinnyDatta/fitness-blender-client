@@ -69,6 +69,7 @@ const Register = () => {
 
                     navigate(location?.state || '/')
                   }
+                  navigate(location?.state || '/')
                 // })
 
             })

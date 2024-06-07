@@ -24,6 +24,11 @@ const TrainerDetails = () => {
             <Helmet>
                 <title>Trainer Details || FitnessBlender</title>
             </Helmet>
+            <div className="text-center">
+            <Link to='/becomeTrainer'>
+          <button  className="btn bg-[#CD5C5C] text-white border-0 border-b-4 border-b-black text-xl md:w-80" >Become a Trainer</button>
+          </Link>
+            </div>
             <section className="bg-[#CD5C5C] text-white my-10 rounded-xl">
 	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
 		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
