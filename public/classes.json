@@ -1,0 +1,53 @@
+[
+    {
+      "className": "Morning Yoga",
+      "classImage": "https://i.ibb.co/vchLGvF/Yoga-in-the-Morning.jpg",
+      "classDetails": "A refreshing morning yoga session to start your day."
+    },
+    {
+      "className": "Cardio Blast",
+      "classImage": "https://i.ibb.co/vvNRDYp/mqdefault.jpg",
+      "classDetails": "High-intensity cardio workout to boost your endurance."
+    },
+    {
+      "className": "Evening Pilates",
+      "classImage": "https://i.ibb.co/34mcM4W/sunset-yoga-fitness-silhouette-woman-beach-mindfulness-training-night-meditation-zen-girl-stretching.jpg",
+      "classDetails": "Improve your flexibility and strength with evening Pilates."
+    },
+    {
+      "className": "HIIT Workout",
+      "classImage": "https://i.ibb.co/Xy0D6BS/Burpee-Outdoor-0.jpg",
+      "classDetails": "High-intensity interval training for maximum fat burn."
+    },
+    {
+      "className": "Zumba Dance",
+      "classImage": "https://i.ibb.co/NpbtCc1/istockphoto-1204577442-612x612.jpg",
+      "classDetails": "Dance your way to fitness with fun Zumba sessions."
+    },
+    {
+      "className": "Strength Training",
+      "classImage": "https://i.ibb.co/drrSyQN/man-lifting-dumbells-at-cross-training-gym-royalty-free-image-1625601682.jpg",
+      "classDetails": "Build muscle and strength with our expert-led training."
+    },
+    {
+      "className": "Aquatic Fitness",
+      "classImage": "https://i.ibb.co/8KqLBCT/istockphoto-171384452-612x612.jpg",
+      "classDetails": "Low-impact water-based workouts for all fitness levels."
+    },
+    {
+      "className": "Spin Class",
+      "classImage": "https://i.ibb.co/ys6w2Fy/istockphoto-1179819957-612x612.jpg",
+      "classDetails": "High-energy indoor cycling for endurance and strength."
+    },
+    {
+      "className": "Boxing Fitness",
+      "classImage": "https://i.ibb.co/chyg2Vk/istockphoto-1130300402-612x612.jpg",
+      "classDetails": "Improve your fitness with boxing techniques and workouts."
+    },
+    {
+      "className": "Core Strength",
+      "classImage": "https://i.ibb.co/vYpJrZR/what-is-core-strength-750x300.jpg",
+      "classDetails": "Focus on core muscles for better stability and strength."
+    }
+  ]
+  
