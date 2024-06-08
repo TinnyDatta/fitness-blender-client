@@ -22,6 +22,7 @@ import AddClass from "../Pages/Dashboard/Admin/AddClass";
 import ActivityLog from "../Pages/Dashboard/Member/ActivityLog";
 import Profile from "../Pages/Dashboard/Member/Profile";
 import BookedTrainer from "../Pages/Dashboard/Member/BookedTrainer";
+import AppliedTrainerDetails from "../Pages/Dashboard/Admin/AppliedTrainerDetails";
 
 const router = createBrowserRouter([
     {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
         element: <BecomeATrainer></BecomeATrainer>
         },
         {
-         path: '/booking',
+         path: '/details/:id/slot/:id',
          element: <TrainerBooking></TrainerBooking>
         },
         {
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
       {
         path: 'applied-trainer',
         element: <AppliedTrainer></AppliedTrainer>
+      },
+      {
+          path: 'applied-trainer/details/:id',
+          element: <AppliedTrainerDetails></AppliedTrainerDetails>
       },
       {
         path: 'add-class',

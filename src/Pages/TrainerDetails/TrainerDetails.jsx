@@ -49,6 +49,17 @@ const TrainerDetails = () => {
        <p className="text-4xl text-[#8A3324] text-center">***Availability of {details.trainerName}***</p>
        
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-16">
+      {details?.availableSlots?.map((slot) => (
+          <div key={slot.id}>
+            <Link to={`/details/${id}/slot/${slot.id}`}>
+          <button  className="btn bg-[#CD5C5C] text-white border-0 border-b-4 border-b-black text-xl md:w-80" >{slot.partOfTheDay} : {slot.time}</button>
+          </Link>
+          </div>
+          
+
+        ))}
+      </div>
+      {/* <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-16">
       {details?.availableSlots?.map((detail, index) => (
           
           <Link to='/booking' key={index}>
@@ -56,7 +67,7 @@ const TrainerDetails = () => {
           </Link>
 
         ))}
-      </div>
+      </div> */}
 
        </div>
         </div>
