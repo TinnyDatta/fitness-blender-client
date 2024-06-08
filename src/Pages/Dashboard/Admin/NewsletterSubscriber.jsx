@@ -5,13 +5,17 @@ const NewsletterSubscriber = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    const {data: subscribers = []} = useQuery({
+    const {data: subscribers = [], isLoading} = useQuery({
         queryKey: ['subscribers'],
         queryFn: async() => {
         const {data} = await axiosSecure.get('/subscribers');
         return data;
         }
     })
+
+    if(isLoading){
+      return <span className="loading loading-bars loading-lg"></span>
+  }
 
     return (
         <div>
