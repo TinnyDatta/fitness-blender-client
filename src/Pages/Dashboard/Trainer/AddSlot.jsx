@@ -7,7 +7,7 @@ const AddSlot = () => {
 
   const axiosSecure = useAxiosSecure();
 
-  const {data: classes = [], isLoading} = useQuery({
+  const {data: classes = [], isLoading, refetch} = useQuery({
        queryKey: ['classes'],
       queryFn: async() => {
       const {data} = await axiosSecure.get('/classes');
@@ -33,6 +33,7 @@ const AddSlot = () => {
     .then(data => {
        if(data.insertedId){
         toast.success('slot added successfully')
+        refetch()
        }
     })
 
