@@ -10,13 +10,17 @@ const AllTrainers = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    const {data: trainers = []} = useQuery({
+    const {data: trainers = [], isLoading} = useQuery({
         queryKey: ['trainers'],
         queryFn: async() => {
         const {data} = await axiosSecure.get('/trainers');
         return data;
         }
     })
+
+    if(isLoading){
+        return <span className="loading loading-bars loading-lg"></span>
+    }
  
     return (
         <>

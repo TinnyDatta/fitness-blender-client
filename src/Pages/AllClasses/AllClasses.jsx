@@ -15,7 +15,6 @@ const AllClasses = () => {
         }
     })
 
-
     const {data: trainers = []} = useQuery({
         queryKey: ['trainers'],
         queryFn: async() => {
