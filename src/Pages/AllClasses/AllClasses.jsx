@@ -7,13 +7,14 @@ const AllClasses = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    const {data: classes = []} = useQuery({
-        queryKey: ['classes'],
+    const {data: classes = [], isLoading} = useQuery({
+         queryKey: ['classes'],
         queryFn: async() => {
         const {data} = await axiosSecure.get('/classes');
         return data;
         }
     })
+
 
     const {data: trainers = []} = useQuery({
         queryKey: ['trainers'],
@@ -22,6 +23,10 @@ const AllClasses = () => {
         return data;
         }
     })
+
+    if(isLoading){
+        return <span className="loading loading-bars loading-lg"></span>
+    }
 
     const getRandomTrainers = () => {
         const shuffledTrainers = [...trainers].sort(() => 0.5 - Math.random());

@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import Swal from "sweetalert2";
 
 const AppliedTrainer = () => {

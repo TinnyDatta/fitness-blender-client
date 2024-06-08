@@ -1,11 +1,9 @@
 
 import Select from 'react-select'
 import useAuth from '../../hooks/useAuth';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 const BecomeATrainer = () => {
     const {user} = useAuth();
-    const axiosSecure = useAxiosSecure();
 
 const handleApplyTrainer = async(e) => {
     e.preventDefault();
