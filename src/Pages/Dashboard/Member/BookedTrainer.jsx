@@ -2,7 +2,7 @@
 const BookedTrainer = () => {
     return (
         <div>
-            <h2 className="textxl">No Booking is available yet</h2>
+            <h2 className="textxl">There is no booking yet</h2>
         </div>
     );
 };

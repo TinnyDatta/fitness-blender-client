@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
@@ -20,9 +19,6 @@ const TeamSection = () => {
 
     return (
         <>
-        <Helmet>
-            <title>All Trainers || FitnessBlender</title>
-        </Helmet>
         <div>
         <h2 className="text-[#CD5C5C] text-center my-2 text-xl">Team</h2>
             <p className="text-4xl text-[#8A3324] text-center">Trainers of FitnessBlender</p>

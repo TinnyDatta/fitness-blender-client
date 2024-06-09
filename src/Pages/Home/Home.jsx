@@ -5,6 +5,7 @@ import Features from "../../components/Home/Features/Features";
 import NewsLetter from "../../components/Home/NewsLetter/NewsLetter";
 import Reviews from "../../components/Home/Reviews/Reviews";
 import TeamSection from "../../components/Home/TeamSection/TeamSection";
+import ForumHome from "../../components/Home/Forum/ForumHome";
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
            <TeamSection></TeamSection>
            <Reviews></Reviews>
            <NewsLetter></NewsLetter>
+           <ForumHome></ForumHome>
         </div>
     );
 };
