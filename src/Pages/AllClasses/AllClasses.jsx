@@ -49,7 +49,7 @@ const AllClasses = () => {
             <title>All Classes || FitnessBlender</title>
         </Helmet>
         <div className="text-center my-10">
-          <h2 className="text-2xl text-[#8A3324] mb-5">Search class writing the name of specific class</h2>
+          <h2 className="text-2xl text-[#8A3324] mb-5">Search class by the name </h2>
           <form onSubmit={handleSearch}>
             <input type="text" name="search" id="" placeholder="type here" className="py-2 mr-1" />
             <input type="submit" value="Search" className="btn bg-[#CD5C5C] text-white" />
