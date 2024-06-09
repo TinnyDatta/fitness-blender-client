@@ -2,18 +2,27 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const AllClasses = () => {
 
+    const [search, setSearch] = useState('');
     const axiosSecure = useAxiosSecure();
 
     const {data: classes = [], isLoading} = useQuery({
-         queryKey: ['classes'],
+         queryKey: ['classes', search],
         queryFn: async() => {
-        const {data} = await axiosSecure.get('/classes');
+        const {data} = await axiosSecure.get(`/classes?search=${search}`);
         return data;
         }
     })
+
+    const handleSearch = e =>{
+        e.preventDefault();
+        const searchText = e.target.search.value;
+        // console.log(searchText);
+        setSearch(searchText);
+      }
 
     const {data: trainers = []} = useQuery({
         queryKey: ['trainers'],
@@ -33,11 +42,19 @@ const AllClasses = () => {
       };
 
 
+
     return (
-        <div className="my-10 mx-auto ml-10">
+        <div className="my-10 max-w-6xl mx-auto ">
             <Helmet>
             <title>All Classes || FitnessBlender</title>
         </Helmet>
+        <div className="text-center my-10">
+          <h2 className="text-2xl text-[#8A3324] mb-5">Search class writing the name of specific class</h2>
+          <form onSubmit={handleSearch}>
+            <input type="text" name="search" id="" placeholder="type here" className="py-2 mr-1" />
+            <input type="submit" value="Search" className="btn bg-[#CD5C5C] text-white" />
+          </form>
+        </div>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {
             classes?.map(item => {
