@@ -17,7 +17,6 @@ const TrainerDetails = () => {
         }
     })
     
-   
 
     return (
         <div>
@@ -59,16 +58,6 @@ const TrainerDetails = () => {
 
         ))}
       </div>
-      {/* <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-16">
-      {details?.availableSlots?.map((detail, index) => (
-          
-          <Link to='/booking' key={index}>
-          <button  className="btn bg-[#CD5C5C] text-white border-0 border-b-4 border-b-black text-xl md:w-80" >{detail.partOfTheDay} : {detail.time}</button>
-          </Link>
-
-        ))}
-      </div> */}
-
        </div>
         </div>
     );

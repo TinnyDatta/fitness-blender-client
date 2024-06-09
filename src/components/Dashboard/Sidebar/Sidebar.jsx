@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
 import { MdOutlineAddCircle } from "react-icons/md";
 import { MdOutlineLibraryAddCheck } from "react-icons/md";
 import { MdOutlineForum } from "react-icons/md";
@@ -13,7 +12,6 @@ import { CiSquareQuestion } from "react-icons/ci";
 import { CiBookmarkCheck } from "react-icons/ci";
 import { RxActivityLog } from "react-icons/rx";
 import { CgProfile } from "react-icons/cg";
-import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth';
 import useRole from '../../../hooks/useRole';

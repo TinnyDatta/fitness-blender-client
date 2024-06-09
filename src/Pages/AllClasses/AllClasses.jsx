@@ -6,6 +6,8 @@ import { useState } from "react";
 
 const AllClasses = () => {
 
+    const [itemsPerPage, setItemsPerPage] = useState(6);
+    const [count, setCount] = useState(0);
     const [search, setSearch] = useState('');
     const axiosSecure = useAxiosSecure();
 
@@ -13,10 +15,16 @@ const AllClasses = () => {
          queryKey: ['classes', search],
         queryFn: async() => {
         const {data} = await axiosSecure.get(`/classes?search=${search}`);
+        setCount(data.length)
         return data;
         }
     })
 
+    console.log(count);
+
+   const pages = [...Array(Math.ceil(count/itemsPerPage)).keys()].map(
+    element => element + 1
+);
     const handleSearch = e =>{
         e.preventDefault();
         const searchText = e.target.search.value;
@@ -78,6 +86,16 @@ const AllClasses = () => {
    )
 })
         }
+        </div>
+        {/* pagination */}
+        <div className="text-center mt-10">
+        <button type="submit" className="btn mx-2 text-white bg-[#CD5C5C]">Previous</button>
+            {
+                pages.map(page => 
+                <button 
+                    className="btn mx-2" key={page}>{page}</button>)
+            }
+             <button type="submit" className="btn text-white bg-[#CD5C5C] mx-2">Next</button>
         </div>
         </div>
     );
