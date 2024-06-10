@@ -17,7 +17,7 @@ const handleAddForum = e => {
 
     const classInfo = {name, description, image, title, email};
 
-    fetch('http://localhost:5000/posts', {
+    fetch('https://fitness-blender-server.vercel.app/posts', {
         method: "POST",
         headers: { "content-type" : "application/json"},
         body: JSON.stringify(classInfo)

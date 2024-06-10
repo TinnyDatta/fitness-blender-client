@@ -14,7 +14,7 @@ const handleAddClass = e => {
 
     const classInfo = {className, classDetails, classImage, email};
 
-    fetch('http://localhost:5000/classes', {
+    fetch('https://fitness-blender-server.vercel.app/classes', {
         method: "POST",
         headers: { "content-type" : "application/json"},
         body: JSON.stringify(classInfo)

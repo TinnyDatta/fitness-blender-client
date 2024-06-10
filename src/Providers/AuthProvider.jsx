@@ -40,7 +40,7 @@ const AuthProvider = ( {children}) => {
             role: 'member',
             status: 'verified',
         }
-        const {data} = await axios.put(`http://localhost:5000/users`, currentUser)
+        const {data} = await axios.put(`https://fitness-blender-server.vercel.app/users`, currentUser)
         return data
     }
 

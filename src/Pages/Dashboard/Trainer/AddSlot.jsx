@@ -26,7 +26,7 @@ const AddSlot = () => {
     const email = user?.email;
     const classInfo = {slotName, day, slotTime, selectedClass, email};
 
-    fetch('http://localhost:5000/slots', {
+    fetch('https://fitness-blender-server.vercel.app/slots', {
         method: "POST",
         headers: { "content-type" : "application/json"},
         body: JSON.stringify(classInfo)

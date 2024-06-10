@@ -23,7 +23,7 @@ const NewsLetter = () => {
     e.preventDefault();
     setMessage('');
 
-    const response = await fetch('http://localhost:5000/subscribers', {
+    const response = await fetch('https://fitness-blender-server.vercel.app/subscribers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

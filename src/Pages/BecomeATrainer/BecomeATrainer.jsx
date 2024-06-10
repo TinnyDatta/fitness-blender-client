@@ -20,7 +20,7 @@ const handleApplyTrainer = async(e) => {
     const info = {name, age, availableTime, profileImage, day, skill, email, status, role};
     console.log(info);
 
-    // fetch('http://localhost:5000/pending', {
+    // fetch('https://fitness-blender-server.vercel.app/pending', {
     //     method: "POST",
     //     headers: { "content-type" : "application/json"},
     //     body: JSON.stringify(info)
@@ -32,7 +32,7 @@ const handleApplyTrainer = async(e) => {
     //    }
     // })
 
-    fetch('http://localhost:5000/users', {
+    fetch('https://fitness-blender-server.vercel.app/users', {
       method: "PUT",
       headers: { "content-type" : "application/json"},
       body: JSON.stringify(info)
