@@ -16,6 +16,18 @@ const TrainerBooking = () => {
     //     }
     // })
 
+    const {id} = useParams();
+    const axiosSecure = useAxiosSecure();
+
+    const {data: details = {} } = useQuery({
+        
+        queryKey: ['details', id],
+        queryFn: async() => {
+        const {data} = await axiosSecure.get(`/details/${id}`);
+        return data;
+        }
+    })
+
     return (
         <div>
             <h2>booked :</h2>

@@ -149,6 +149,12 @@ const Sidebar = () => {
               address='add-class' 
               icon={MdPostAdd} >
               </NavItem>
+
+              <NavItem 
+              label='Add Forum' 
+              address='add-forum' 
+              icon={MdOutlineForum} >
+              </NavItem>
                   </div>
                 )}
 

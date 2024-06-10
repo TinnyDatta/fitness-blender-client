@@ -4,8 +4,9 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import useAuth from '../../../hooks/useAuth';
 const AddSlot = () => {
-
+  const {user} = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const {data: classes = [], isLoading, refetch} = useQuery({
@@ -22,8 +23,8 @@ const AddSlot = () => {
     const day = e.target.day.value;
     const slotTime = e.target.slotTime.value;
     const selectedClass = e.target.className.value;
-
-    const classInfo = {slotName, day, slotTime, selectedClass};
+    const email = user?.email;
+    const classInfo = {slotName, day, slotTime, selectedClass, email};
 
     fetch('http://localhost:5000/slots', {
         method: "POST",

@@ -73,7 +73,9 @@ const router = createBrowserRouter([
         },
         {
           path: '/forum',
-          element: <Forum></Forum>
+          element: <PrivateRoute>
+            <Forum></Forum>
+          </PrivateRoute>
         }
       ]
     },
