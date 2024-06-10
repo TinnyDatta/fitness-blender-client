@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const NewsletterSubscriber = () => {
 
@@ -19,6 +20,9 @@ const NewsletterSubscriber = () => {
 
     return (
         <div>
+          <Helmet>
+          <title>Newsletter Subscribers</title>
+        </Helmet>
             <div className="overflow-x-auto">
   <table className="table w-full">
     {/* head */}

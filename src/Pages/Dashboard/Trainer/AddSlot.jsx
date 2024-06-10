@@ -3,6 +3,7 @@ import Select from 'react-select'
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 const AddSlot = () => {
 
   const axiosSecure = useAxiosSecure();
@@ -58,6 +59,9 @@ const classOptions = classes.map(item => [
 
   return (
     <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
+      <Helmet>
+          <title>Add Slot</title>
+        </Helmet>
       <form onSubmit={handleAddSlot}>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
           <div className='space-y-6'>

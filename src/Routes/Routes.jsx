@@ -23,6 +23,9 @@ import ActivityLog from "../Pages/Dashboard/Member/ActivityLog";
 import Profile from "../Pages/Dashboard/Member/Profile";
 import BookedTrainer from "../Pages/Dashboard/Member/BookedTrainer";
 import AppliedTrainerDetails from "../Pages/Dashboard/Admin/AppliedTrainerDetails";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import TrainerRoute from "./TrainerRoute";
 
 const router = createBrowserRouter([
     {
@@ -48,15 +51,21 @@ const router = createBrowserRouter([
         },
         {
          path: '/details/:id',
-         element: <TrainerDetails></TrainerDetails>
+         element: <PrivateRoute>
+          <TrainerDetails></TrainerDetails>
+         </PrivateRoute>
         },
         {
         path : '/becomeTrainer',
-        element: <BecomeATrainer></BecomeATrainer>
+        element: <PrivateRoute>
+          <BecomeATrainer></BecomeATrainer>
+        </PrivateRoute>
         },
         {
          path: '/details/:id/slot/:id',
-         element: <TrainerBooking></TrainerBooking>
+         element: <PrivateRoute>
+          <TrainerBooking></TrainerBooking>
+         </PrivateRoute>
         },
         {
           path: '/allClasses',
@@ -70,59 +79,100 @@ const router = createBrowserRouter([
     },
     {
       path: "/dashboard",
-      element : <DashboardLayout></DashboardLayout>,
+      element : <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+        </PrivateRoute>,
       children:[
         {
           index: true,
-          element: <FrontPage></FrontPage>
+          element: <PrivateRoute>
+            <FrontPage></FrontPage>
+          </PrivateRoute>
         },
         // member routes
          {
           path: 'activity-log',
-          element: <ActivityLog></ActivityLog>
+          element: <PrivateRoute>
+             <ActivityLog></ActivityLog>
+          </PrivateRoute> 
          },
          {
           path: 'profile',
-          element: <Profile></Profile>
+          element: <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
          },
          {
           path: 'booked-trainer',
-          element: <BookedTrainer></BookedTrainer>
+          element: <PrivateRoute>
+            <BookedTrainer></BookedTrainer>
+          </PrivateRoute>
          },
 
         // trainer routes
        {
         path: 'manage-slot',
-        element: <ManageSlots></ManageSlots>
+        element: <PrivateRoute>
+          <TrainerRoute>
+          <ManageSlots></ManageSlots>
+          </TrainerRoute>
+        </PrivateRoute>
        },
        {
         path: 'add-slot',
-        element: <AddSlot></AddSlot>
+        element: <PrivateRoute>
+          <TrainerRoute>
+          <AddSlot></AddSlot>
+          </TrainerRoute>
+        </PrivateRoute>
        },
+      //  both admin and trainer routes
        {
         path: 'add-forum',
-        element: <AddForum></AddForum>
+        element: <PrivateRoute>
+          <AddForum></AddForum>
+        </PrivateRoute>
        },
       //  admin routes
       {
         path: 'subscribers',
-        element: <NewsletterSubscriber></NewsletterSubscriber>
+        element: <PrivateRoute>
+          <AdminRoute>
+          <NewsletterSubscriber></NewsletterSubscriber>
+          </AdminRoute>
+        </PrivateRoute>
       },
       {
         path: 'all-trainers',
-        element: <AllTrainersDashboard></AllTrainersDashboard>
+        element: <PrivateRoute>
+          <AdminRoute>
+          <AllTrainersDashboard></AllTrainersDashboard>
+          </AdminRoute>
+        </PrivateRoute>
       },
       {
         path: 'applied-trainer',
-        element: <AppliedTrainer></AppliedTrainer>
+        element: <PrivateRoute>
+          <AdminRoute>
+          <AppliedTrainer></AppliedTrainer>
+          </AdminRoute>
+        </PrivateRoute>
       },
       {
           path: 'applied-trainer/details/:id',
-          element: <AppliedTrainerDetails></AppliedTrainerDetails>
+          element: <PrivateRoute>
+            <AdminRoute>
+            <AppliedTrainerDetails></AppliedTrainerDetails>
+            </AdminRoute>
+          </PrivateRoute>
       },
       {
         path: 'add-class',
-        element: <AddClass></AddClass>
+        element: <PrivateRoute>
+          <AdminRoute>
+          <AddClass></AddClass>
+          </AdminRoute>
+        </PrivateRoute>
       }
       ],
     },

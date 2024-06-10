@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const AllTrainersDashboard = () => {
 
@@ -19,6 +20,9 @@ const AllTrainersDashboard = () => {
 
     return (
         <div>
+          <Helmet>
+          <title>All Trainers</title>
+        </Helmet>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}

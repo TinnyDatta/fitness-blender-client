@@ -4,15 +4,20 @@ import { FaEye } from "react-icons/fa";
 
 const ActivityLog = () => {
 
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
-    const {data: pending = []} = useQuery({
-        queryKey: ['pending'],
-        queryFn: async() => {
-        const {data} = await axiosSecure.get('/pending');
-        return data;
-        }
-    })
+  const {data: users = [], isLoading} = useQuery({
+    queryKey: ['users'],
+    queryFn: async() => {
+    const {data} = await axiosSecure.get('/users');
+    return data;
+    }
+  })
+  console.log(users);
+  
+  if(isLoading){
+    return <span className="loading loading-bars loading-lg"></span>
+  }
 
     return (
         <div>
@@ -21,20 +26,18 @@ const ActivityLog = () => {
     {/* head */}
     <thead className="text-xl">
       <tr>
-        <th>Name</th>
-        <th>Skill</th>
-        <th>Day</th>
+        <th>Email</th>
         <th>Status</th>
+        <th>Role</th>
         <th></th>
       </tr>
     </thead>
     <tbody className="text-lg">
      {
-        pending?.map(item =>
+        users?.map(item =>
 <tr  key={item._id} className="bg-base-200 py-2 ">
-        <td >{item.name}</td>
-        <td>{item.skill}</td>
-        <td>{item.day}</td>
+        <td >{item.email}</td>
+        <td >{item.role}</td>
         <td className="text-red-400">{item.status} </td>
         <td><FaEye /> </td>
       </tr>
