@@ -33,7 +33,7 @@ const Forum = () => {
     const handleDownvote = (postId) => {
         setVotes((prevVotes) => ({
           ...prevVotes,
-          [postId]: (prevVotes[postId] || 0) - 1,
+          [postId]: Math.max((prevVotes[postId] || 0) - 1, 0),
         }));
       };
 
