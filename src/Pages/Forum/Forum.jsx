@@ -1,9 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
+import { BiUpvote } from "react-icons/bi";
+import { BiDownvote } from "react-icons/bi";
+import { useState } from "react";
 
 const Forum = () => {
 
     const axiosCommon = useAxiosCommon();
+    // const [votes, setVotes] = useState(0);
+    const [votes, setVotes] = useState({});
 
     const {data: posts = [], isLoading} = useQuery({
         queryKey: ['posts'],
@@ -12,6 +17,25 @@ const Forum = () => {
         return data;
         }
     })
+
+    // const handleUpvote = () => {
+    //     setVotes(votes + 1);
+    // }
+    const handleUpvote = (postId) => {
+        setVotes((prevVotes) => ({
+          ...prevVotes,
+          [postId]: (prevVotes[postId] || 0) + 1,
+        }));
+      };
+    // const handleDownvote = () => {
+    //     setVotes(votes === 0 ? -1 : votes -1);
+    // }
+    const handleDownvote = (postId) => {
+        setVotes((prevVotes) => ({
+          ...prevVotes,
+          [postId]: (prevVotes[postId] || 0) - 1,
+        }));
+      };
 
     if(isLoading){
         return <span className="loading loading-bars loading-lg"></span>
@@ -33,16 +57,35 @@ const Forum = () => {
 		<h2 className="mb-1 text-xl font-bold">{post.title}</h2>
 		<p className="text-lg dark:text-gray-600">{post.description}</p>
 	</div>
-	<div className="flex flex-wrap gap-10">
-		<button>Upvote</button>
-        <button>Downvote</button>
+    {/* <div className="flex flex-wrap gap-10">
+        <p>Votes: {votes}</p>
+        <button onClick={handleUpvote} className="flex flex-row items-center gap-2">Upvote <BiUpvote /></button>
+        <button onClick={handleDownvote} className="flex flex-row items-center gap-2">Downvote
+        <BiDownvote /></button>
 		
-	</div>
+	</div> */}
+    <div className="flex flex-wrap gap-10">
+              
+              <button
+                onClick={() => handleUpvote(post._id)}
+                className="flex flex-row items-center gap-2"
+              >
+                Upvote <BiUpvote />
+              </button>
+              <p>Votes: {votes[post._id] || 0}</p>
+              <button
+                onClick={() => handleDownvote(post._id)}
+                className="flex flex-row items-center gap-2"
+              >
+                Downvote <BiDownvote />
+              </button>
+            </div>
 </div>
 
             ))
         }
     </div>
+    
         </div>
     );
 };
