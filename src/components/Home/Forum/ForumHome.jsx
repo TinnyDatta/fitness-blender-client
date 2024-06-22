@@ -47,11 +47,13 @@ const ForumHome = () => {
         {
             posts?.map(post => (
                 <div key={post._id} className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
-	<div className="flex space-x-4">
-		<div className="flex flex-col space-y-1">
-			<a rel="noopener noreferrer" href="#" className="text-lg font-semibold">Posted By : {post.name}</a>
-		</div>
-	</div>
+ <div className="flex space-x-4">
+                            <div className="flex flex-col space-y-1">
+                                <a rel="noopener noreferrer" href="#" className="text-lg font-semibold">Posted By : {post.name}</a>
+                                {post.role === 'admin' && <span className="badge bg-red-500 text-white">Admin</span>}
+                                {post.role === 'trainer' && <span className="badge bg-blue-500 text-white">Trainer</span>}
+                            </div>
+                        </div>
 	<div>
 		<img src={post.image} alt="" className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
 		<h2 className="mb-1 text-xl font-bold">{post.title}</h2>

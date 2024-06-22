@@ -2,10 +2,12 @@
 import { toast } from "react-toastify";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import useRole from "../../../hooks/useRole";
 
 
 const AddForum = () => {
 const {user} = useAuth();
+const [role] = useRole()
 
 const handleAddForum = e => {
     e.preventDefault();
@@ -15,7 +17,7 @@ const handleAddForum = e => {
     const title = e.target.title.value;
     const email = user?.email;
 
-    const classInfo = {name, description, image, title, email};
+    const classInfo = {name, description, image, title, email, role};
 
     fetch('https://fitness-blender-server.vercel.app/posts', {
         method: "POST",
