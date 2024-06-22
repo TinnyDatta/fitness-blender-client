@@ -25,7 +25,7 @@ const Forum = () => {
 
     useEffect(() => {
       const getCount = async () => {
-        const {data} = await axios.get('http://localhost:5000/posts-count')
+        const {data} = await axios.get('https://fitness-blender-server.vercel.app/posts-count')
         setCount(data.count)
         // return data;
       }
@@ -36,7 +36,8 @@ const Forum = () => {
     console.log(count);
 
      // pagination
-     const pages = [...Array(Math.ceil(count/postsPerPage)).keys()].map(
+     const numberOfPages = Math.ceil(count/postsPerPage)
+     const pages = [...Array(numberOfPages).keys()].map(
       element => element + 1
   );
 
@@ -105,7 +106,10 @@ const Forum = () => {
 
     {/* pagination */}
     <div className="text-center mt-10">
-        <button type="submit" className="btn mx-2 text-white bg-[#CD5C5C]">Previous</button>
+        <button
+        disabled={currentPage === 1} 
+        onClick={() => handlePaginationButton(currentPage - 1)}
+        type="submit" className="btn mx-2 text-white bg-[#CD5C5C]">Previous</button>
             {
                 pages.map(btnNumber => (
                 <button 
@@ -113,7 +117,10 @@ const Forum = () => {
                     className={`btn mx-2 ${currentPage === btnNumber? 'text-white bg-[#CD5C5C]' : ''}`} key={btnNumber}>{btnNumber}</button>
                 ))
             }
-             <button type="submit" className="btn text-white bg-[#CD5C5C] mx-2">Next</button>
+             <button 
+             disabled={currentPage === numberOfPages}
+             onClick={() => handlePaginationButton(currentPage + 1)}
+             type="submit" className="btn text-white bg-[#CD5C5C] mx-2">Next</button>
         </div>
     
         </div>

@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../../hooks/useAxiosCommon";
 import { Link } from "react-router-dom";
+import { BiUpvote } from "react-icons/bi";
+import { BiDownvote } from "react-icons/bi";
+import { useState } from "react";
 
 
 const ForumHome = () => {
 
     const axiosCommon = useAxiosCommon();
+    const [votes, setVotes] = useState({});
 
     const {data: posts = [], isLoading} = useQuery({
         queryKey: ['posts'],
@@ -14,6 +18,20 @@ const ForumHome = () => {
         return data;
         }
     })
+
+    const handleUpvote = (postId) => {
+        setVotes((prevVotes) => ({
+          ...prevVotes,
+          [postId]: (prevVotes[postId] || 0) + 1,
+        }));
+      };
+    
+    const handleDownvote = (postId) => {
+        setVotes((prevVotes) => ({
+          ...prevVotes,
+          [postId]: Math.max((prevVotes[postId] || 0) - 1, 0),
+        }));
+      };
 
     if(isLoading){
         return <span className="loading loading-bars loading-lg"></span>
@@ -48,10 +66,21 @@ const ForumHome = () => {
             {/* </p> */}
 	</div>
 	<div className="flex flex-wrap gap-10">
-		<button>Upvote</button>
-        <button>Downvote</button>
-		
-	</div>
+              
+              <button
+                onClick={() => handleUpvote(post._id)}
+                className="flex flex-row items-center gap-2"
+              >
+                Upvote <BiUpvote />
+              </button>
+              <p>Votes: {votes[post._id] || 0}</p>
+              <button
+                onClick={() => handleDownvote(post._id)}
+                className="flex flex-row items-center gap-2"
+              >
+                Downvote <BiDownvote />
+              </button>
+            </div>
 </div>
 
             ))

@@ -2,29 +2,50 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AllClasses = () => {
 
-    const [itemsPerPage, setItemsPerPage] = useState(6);
+    // const [itemsPerPage, setItemsPerPage] = useState(6);
+    // const [count, setCount] = useState(0);
+    const [classesPerPage, setClassesPerPage] = useState(6);
+    const [currentPage, setCurrentPage] = useState(1);
     const [count, setCount] = useState(0);
+
     const [search, setSearch] = useState('');
     const axiosSecure = useAxiosSecure();
 
     const {data: classes = [], isLoading} = useQuery({
-         queryKey: ['classes', search],
+         queryKey: ['classes', search, currentPage, classesPerPage],
         queryFn: async() => {
-        const {data} = await axiosSecure.get(`/classes?search=${search}`);
+        const {data} = await axiosSecure.get(`/classes?search=${search}&page=${currentPage}&size=${classesPerPage}`);
         setCount(data.length)
         return data;
         }
     })
 
-    console.log(count);
+    useEffect(() => {
+        const getClassCount = async () => {
+          const {data} = await axios.get('http://localhost:5000/classes-count')
+          setCount(data.count)
+          // return data;
+        }
+        getClassCount()
+      },[])
 
-   const pages = [...Array(Math.ceil(count/itemsPerPage)).keys()].map(
+    console.log(count);
+   const numberOfPages = Math.ceil(count/classesPerPage)
+   const pages = [...Array(numberOfPages).keys()].map(
     element => element + 1
 );
+
+  // pagination button
+  const handlePaginationBtn = (value) => {
+    console.log(value);
+    setCurrentPage(value);
+   }
+
     const handleSearch = e =>{
         e.preventDefault();
         const searchText = e.target.search.value;
@@ -89,13 +110,20 @@ const AllClasses = () => {
         </div>
         {/* pagination */}
         <div className="text-center mt-10">
-        <button type="submit" className="btn mx-2 text-white bg-[#CD5C5C]">Previous</button>
+        <button 
+        disabled={currentPage === 1}
+        onClick={() => handlePaginationBtn(currentPage - 1)}
+        type="submit" className="btn mx-2 text-white bg-[#CD5C5C]">Previous</button>
             {
-                pages.map(page => 
-                <button 
-                    className="btn mx-2" key={page}>{page}</button>)
+                pages.map(btnNum => 
+                <button
+                  onClick={() => handlePaginationBtn(btnNum)}
+                    className={`btn mx-2 ${currentPage === btnNum? 'text-white bg-[#CD5C5C]' : ''}`} key={btnNum}>{btnNum}</button>)
             }
-             <button type="submit" className="btn text-white bg-[#CD5C5C] mx-2">Next</button>
+             <button 
+             disabled={currentPage === numberOfPages}
+             onClick={() => handlePaginationBtn(currentPage + 1)}
+             type="submit" className="btn text-white bg-[#CD5C5C] mx-2">Next</button>
         </div>
         </div>
     );
