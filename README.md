@@ -39,6 +39,15 @@
 10. **Contact and Support**
     - Easy access to contact information and support services.
     - Users can submit inquiries and receive assistance promptly.
+
+   ## 3 steps to clone the project
+<li>git clone</li>
+<li>npm i</li>
+<li>npm run dev</li>
+
+## Technologies
+<li>online schedule</li>
+<li>Select trainer</li>
 ## admin user name : Admin & password : 123456Aa
 
 - [live link of fitness blender](https://fitness-blender-f431e.web.app) 
