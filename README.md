@@ -41,9 +41,10 @@
     - Users can submit inquiries and receive assistance promptly.
 
    ## 3 steps to clone the project
-<li>git clone</li>
-<li>npm i</li>
-<li>npm run dev</li>
+<li>React</li>
+<li>Node.js</li>
+<li>Mongodb</li>
+<li>Firebase</li>
 
 ## Technologies
 <li>online schedule</li>
