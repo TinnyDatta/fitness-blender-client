@@ -1,5 +1,8 @@
 # FitnessBlender
 
+## Overview
+Our first duty is to keep ourselves fit. Fitness Blender helps people to get courses from trainers by remaining at home. Also one can get one to one support. Individuals have the oportunity to choose trainer by knowing their ability from the website. One don't have to think about privacy because our website is designed to keep users data private.
+
 ## Features
 1. **User Registration and Authentication**
    - Secure signup and login functionality to protect user data and privacy.
